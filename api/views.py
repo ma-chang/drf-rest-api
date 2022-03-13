@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
@@ -11,7 +9,7 @@ from .serializer import UserSerializer, TaskSerializer
 
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
-  queryset = User.objects.all
+  queryset = User.objects.all()
   serializer_class = UserSerializer
   permission_class = (AllowAny,)
 
@@ -24,7 +22,7 @@ class ManageUserView(generics.RetrieveAPIView):
       return self.request.user
 
 class TaskViewSet(viewsets.ModelViewSet):
-  queryset = Task.objects.all
+  queryset = Task.objects.all()
   serializer_class = TaskSerializer
   authentication_classes = (TokenAuthentication,)
   permission_classes = (IsAuthenticated,)
